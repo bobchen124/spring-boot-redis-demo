@@ -12,7 +12,8 @@
     <modules>
         <module>springboot.simple.redis.demo</module>
         <module>springboot.cluser.redis.demo</module>
-    </modules>
+		<module>springboot.webflux.demo</module>
+	</modules>
     
     <parent>
         <groupId>org.springframework.boot</groupId>
