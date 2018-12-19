@@ -14,7 +14,7 @@ $ make <br>
 $ src/redis-server
 
 # Redis client
-内容
+'
 $ src/redis-cli
 
 redis> set foo bar
@@ -24,3 +24,4 @@ OK
 redis> get foo
 
 "bar"
+'
