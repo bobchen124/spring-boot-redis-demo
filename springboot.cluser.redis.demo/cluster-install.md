@@ -31,3 +31,13 @@ ps -ef|grep redis-server | grep -v grep | awk '{print $2}' | xargs kill-9
 ```
 
 4.简单测试 <br>
+···
+查看进程
+ps -ef|grep redis-server
+···
+
+···
+./redis-cli -h 127.0.0.1 -p 6380
+cluster nodes
+cluster info
+···
