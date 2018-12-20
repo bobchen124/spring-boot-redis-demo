@@ -11,7 +11,7 @@
 
 3.创建必要启停脚本 <br>
 
-```
+```shell
 start.sh
 
 #!/bin/bash
