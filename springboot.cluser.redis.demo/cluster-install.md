@@ -11,4 +11,23 @@
 
 3.创建必要启停脚本 <br>
 
+```
+start.sh
+
+#!/bin/bash
+
+../../redis-4.0.12/src/redis-server ../6379/redis.conf &
+../../redis-4.0.12/src/redis-server ../6380/redis.conf &
+../../redis-4.0.12/src/redis-server ../6381/redis.conf &
+../../redis-4.0.12/src/redis-server ../6382/redis.conf &
+../../redis-4.0.12/src/redis-server ../6383/redis.conf &
+../../redis-4.0.12/src/redis-server ../6384/redis.conf &
+
+stop.sh
+
+#!/bin/bash
+
+ps -ef|grep redis-server | grep -v grep | awk '{print $2}' | xargs kill-9
+```
+
 4.简单测试 <br>
