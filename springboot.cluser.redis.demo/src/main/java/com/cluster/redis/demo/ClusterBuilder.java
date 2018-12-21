@@ -97,7 +97,7 @@ public class ClusterBuilder extends Thread {
         System.out.println("Start to set slots...");
         for (ClusterNode node : masterNodes) {
             try {
-                node.getConnection().sync().clusterAddSlots(node.getSlotsBegin(), node.getSlotsEnd());
+                node.getConnection().sync().clusterAddSlots(createSlots(node.getSlotsBegin(), node.getSlotsEnd()));
             } catch (RedisCommandTimeoutException | RedisConnectionException e) {
                 e.printStackTrace();
                 System.out.println("add slots failed-->" + node.getHost() + ":" + node.getPort());
@@ -124,6 +124,17 @@ public class ClusterBuilder extends Thread {
             node.getConnection().close();
             node.getRedisClient().shutdown();
         }
+    }
+
+    public static int[] createSlots(int from, int to) {
+        int[] result = new int[to - from + 1];
+        int counter = 0;
+
+        for (int i = from; i <= to; i++) {
+            result[counter++] = i;
+        }
+
+        return result;
     }
 
     public static void main(String[] args) {

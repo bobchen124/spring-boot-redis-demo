@@ -3,6 +3,7 @@ package redis.test.cluster;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.RedisClusterConnection;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import redis.test.BaseTest;
 
 /**
@@ -16,11 +17,19 @@ public class ClusterTest extends BaseTest {
     @Autowired
     RedisClusterConnection redisClusterConnection;
 
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
+
     @Test
     public void test() {
         //System.out.println(redisClusterConnection.set("t".getBytes(), "tt".getBytes()));
 
         System.out.println(new String(redisClusterConnection.get("t".getBytes())));
+    }
+
+    @Test
+    public void strTest() {
+        System.out.println(stringRedisTemplate.opsForValue().get("t"));
     }
 
 }

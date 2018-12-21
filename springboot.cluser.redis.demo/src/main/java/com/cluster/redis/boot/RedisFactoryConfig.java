@@ -7,6 +7,7 @@ import org.springframework.data.redis.connection.RedisClusterConfiguration;
 import org.springframework.data.redis.connection.RedisClusterConnection;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
 /**
  * @author chenbo@guworks.cc
@@ -37,6 +38,11 @@ public class RedisFactoryConfig {
     @Bean
     public RedisClusterConnection clusterConnection(RedisConnectionFactory redisConnectionFactory) {
         return redisConnectionFactory.getClusterConnection();
+    }
+
+    @Bean
+    public StringRedisTemplate redisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        return new StringRedisTemplate(redisConnectionFactory);
     }
 
 }
